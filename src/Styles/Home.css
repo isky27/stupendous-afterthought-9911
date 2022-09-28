@@ -1,0 +1,13 @@
+#landing-video{
+  width: 100%;
+  z-index: -1;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#nav-container{
+  position: fixed;
+  top: 0px;
+  z-index: 2;
+}
