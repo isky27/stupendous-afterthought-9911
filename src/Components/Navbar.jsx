@@ -52,8 +52,9 @@ function Navbar() {
       style={{
         backgroundColor: navColor,
       }}
+      w={"full"}
     >
-      <Flex direction={"row"} gap={5}>
+      <Flex w={"full"} direction={"row"} justify={"space-around"}>
         <Image
           w={"200px"}
           h={"30px"}
@@ -61,12 +62,11 @@ function Navbar() {
           src="https://www.engagebay.com/new/assets/img/engagebay-logo.svg"
           alt="Engagebay Logo"
         />
-        <Box fontWeight={"500"} pl={10}>
+        <Box fontWeight={"500"} pl={10} w={"full"}>
           <Flex
             direction={"row"}
             alignItems={"center"}
-            justifyContent={"space-between"}
-            gap={9}
+            justify={"space-around"}
             mt={2}
           >
             <Box>
