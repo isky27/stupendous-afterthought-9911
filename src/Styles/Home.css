@@ -8,13 +8,14 @@
   position: absolute;
 }
 #tab-video{
+  width:2000%;
   z-index: -1;
   top:0;
   left:0;
-  object-fit: cover;
+  /* object-fit: cover; */
   position: absolute;
   overflow:hidden;
-  background-size: cover;
+  /* background-size: cover; */
 }
 #nav-container{
   position: fixed;
