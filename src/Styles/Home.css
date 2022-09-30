@@ -7,8 +7,17 @@
   left:0;
   position: absolute;
 }
+#tab-video{
+  z-index: -1;
+  top:0;
+  left:0;
+  object-fit: cover;
+  position: absolute;
+  overflow:hidden;
+  background-size: cover;
+}
 #nav-container{
   position: fixed;
   top: 0px;
-  z-index: 2;
+  z-index: 4;
 }
