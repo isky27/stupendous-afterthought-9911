@@ -227,34 +227,19 @@ function Footer() {
                 <Flex direction={"row"}>
                   <ButtonGroup variant="ghost">
                     <IconButton
-                      as="a"
-                      href="#"
-                      aria-label="LinkedIn"
                       icon={<FaFacebook fontSize="1.25rem" />}
                     />
                     <IconButton
-                      as="a"
-                      href="#"
-                      aria-label="LinkedIn"
                       icon={<FaLinkedin fontSize="1.25rem" />}
                     />
                     <IconButton
-                      as="a"
-                      href="#"
-                      aria-label="Twitter"
                       icon={<FaTwitter fontSize="1.25rem" />}
                     />
 
                     <IconButton
-                      as="a"
-                      href="#"
-                      aria-label="Youtube"
                       icon={<FaYoutube fontSize="1.25rem" />}
                     />
                     <IconButton
-                      as="a"
-                      href="#"
-                      aria-label="Instagram"
                       icon={<FaInstagram fontSize="1.25rem" />}
                     />
                   </ButtonGroup>

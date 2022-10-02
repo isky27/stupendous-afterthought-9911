@@ -9,6 +9,7 @@ import ReviewsTab from "../Components/HomeComponents/ReviewsTab";
 import CreateOwnViews from "../Components/HomeComponents/CreateOwnViews";
 import ClinetTestimonial from "../Components/HomeComponents/ClinetTestimonial";
 import GetStartedBox from "../Components/HomeComponents/GetStartedBox";
+import BoxHover from "../Components/HomeComponents/BoxHover";
 
 function Home() {
   return (
@@ -22,6 +23,7 @@ function Home() {
         <ReviewsTab/>
         <CreateOwnViews/>
         <ClinetTestimonial/>
+        <BoxHover/>
         <GetStartedBox/>
         <Footer/>
       </Box>

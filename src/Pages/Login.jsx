@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import React, { useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -11,26 +11,17 @@ import {
   Button,
   Grid,
   GridItem,
-  Stack,Alert,AlertIcon
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-
-
+import {Link} from 'react-router-dom'
 const initialState = {
-  name: "",
   username: "",
-  websiteUrl: "",
   password: "",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "name":
-      return { ...state, name: action.payload };
     case "username":
       return { ...state, username: action.payload };
-    case "websiteUrl":
-      return { ...state, websiteUrl: action.payload };
     case "password":
       return { ...state, password: action.payload };
     case "reset":
@@ -40,49 +31,48 @@ const reducer = (state, action) => {
   }
 };
 
-function SignUp() {
+function Login() {  
 
+const history = useNavigate();
 
+const [state, dispatch] = useReducer(reducer, initialState);
 
-const vinay = JSON.parse(localStorage.getItem("userData"))||[]
-console.log(vinay)
-
- const history= useNavigate()
-
- const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { username, name, password, websiteUrl } = state;
+    const { username, password } = state;
+
+    const getuserArr = JSON.parse(localStorage.getItem("userData"));
+
+    console.log(getuserArr);
+
     if (username === "") {
       alert("EMAIL field required");
-      <Stack>
-        <Alert status="error">
-          <AlertIcon />
-          There was an error processing your request
-        </Alert>
-      </Stack>;
     } else if (!username.includes("@")) {
       alert("Please enter valid EMAIL address");
-    } else if (name === "") {
-      alert("NAME field required");
     } else if (password === "") {
       alert("PASSWORD field required");
     } else if (password.length < 5) {
       alert("Please enter PASSWORD more than 5 characters");
-    } else if (websiteUrl === "") {
-      alert("Website URL field required");
     } else {
-      console.log("done");
-      vinay.push(state);
-      dispatch({ type: "reset" });
-      localStorage.setItem("userData", JSON.stringify(vinay));
-      history("/login");
+      if (getuserArr && getuserArr.length) {
+       
+        const userLogin = getuserArr.filter((el) => {
+          return el.username === username && el.password === password;
+        });
+        console.log(userLogin);
+        if (userLogin.length === 0) {
+          alert("Invalid Details");
+        } else {
+          console.log("done");
+          dispatch({ type: "reset" });
+          localStorage.setItem("user_login", JSON.stringify(...userLogin));
+          history("/");
+        }
+      }
     }
   };
-
-  console.log(state)
 
   return (
     <>
@@ -98,25 +88,9 @@ console.log(vinay)
                   "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/engagebay.png"
                 }
               />
-              <Text p={4} fontSize={19}>
-                Get Started for FREE
-              </Text>
+              <Text fontSize={"4xl"}>Login</Text>
               <FormControl mt={4}>
                 <Grid gap={4}>
-                  <Box>
-                    <FormLabel>Name</FormLabel>
-                    <Input
-                      placeholder="Name"
-                      type="text"
-                      borderRadius={1}
-                      py={6}
-                      name="name"
-                      value={state.name}
-                      onChange={(e) =>
-                        dispatch({ type: "name", payload: e.target.value })
-                      }
-                    />
-                  </Box>
                   <Box>
                     <FormLabel>Username</FormLabel>
                     <Input
@@ -128,23 +102,6 @@ console.log(vinay)
                       value={state.username}
                       onChange={(e) =>
                         dispatch({ type: "username", payload: e.target.value })
-                      }
-                    />
-                  </Box>
-                  <Box>
-                    <FormLabel>Website URL</FormLabel>
-                    <Input
-                      placeholder="Website URL"
-                      borderRadius={1}
-                      py={6}
-                      type="url"
-                      name="websiteUrl"
-                      value={state.websiteUrl}
-                      onChange={(e) =>
-                        dispatch({
-                          type: "websiteUrl",
-                          payload: e.target.value,
-                        })
                       }
                     />
                   </Box>
@@ -168,14 +125,14 @@ console.log(vinay)
                 mt={6}
                 w={"full"}
                 bgColor="#f2603e"
-                onClick={handleSubmit}
                 borderRadius={1}
                 py={6}
                 color={"white"}
                 type="submit"
                 _hover={{ bgColor: "#f2603e" }}
+                onClick={handleSubmit}
               >
-                <Text fontSize={18}>Submit</Text>
+                <Text fontSize={18}>Login</Text>
               </Button>
               <Button
                 mt={4}
@@ -196,14 +153,14 @@ console.log(vinay)
                     src="https://d2p078bqz5urf7.cloudfront.net/cloud/dev/assets/img/google-favicon.png"
                   />
                   <Text w={"full"} h={"full"} color={"white"}>
-                    SIGN UP WITH G SUITE
+                    SIGN IN WITH G SUITE
                   </Text>
                 </Flex>
               </Button>
               <Box mt={9}>
                 <Link fontSize={"14"}>Forget Password?</Link>
                 <Text fontSize={"14"}>
-                  Already have an account? <Link to='/login'>Sign In</Link>
+                  Don't have an account? <Link to="/signup">Sign Up</Link>
                 </Text>
                 <Flex
                   align={"center"}
@@ -223,7 +180,7 @@ console.log(vinay)
           </Box>
           <Box
             w={"65%"}
-            h={"100%"}
+            h={"100vh"}
             position={"fixed"}
             top={0}
             right={0}
@@ -243,7 +200,6 @@ console.log(vinay)
               top={6}
               right={4}
               borderRadius={2}
-              zIndex={3}
             >
               <Grid
                 templateRows="repeat(3, 1fr)"
@@ -260,9 +216,10 @@ console.log(vinay)
                 </GridItem>
                 <GridItem rowSpan={2} colSpan={1}>
                   <Text color={"white"} fontSize={"sm"}>
-                    This product is just like HubSpot. I cannot believe the
-                    price, so far I've used it for 2 weeks and those guys have
-                    added 2 features more.
+                    I love the landing page builder and ability to import a URL
+                    and basically create any type of landing page. This makes
+                    creating funnels super easy. You can then customize it to
+                    suit your needs.
                   </Text>
                 </GridItem>
                 <GridItem rowSpan={1} colSpan={1} align={"right"}>
@@ -276,6 +233,7 @@ console.log(vinay)
               <Flex justify={"center"}>
                 <Image
                   w={"65%"}
+                  align={"bottom center"}
                   src={
                     "https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/login-image.svg"
                   }
@@ -289,4 +247,4 @@ console.log(vinay)
   );
 }
 
-export default SignUp;
+export default Login;
