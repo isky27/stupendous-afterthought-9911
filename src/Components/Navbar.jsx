@@ -9,10 +9,9 @@ import {
   MenuItem,
   MenuDivider,
   Button,
-  Link,
   useDisclosure,
 } from "@chakra-ui/react";
-
+import {Link} from 'react-router-dom'
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 function Navbar() {
@@ -55,13 +54,15 @@ function Navbar() {
       w={"full"}
     >
       <Flex w={"full"} direction={"row"} justify={"space-around"}>
-        <Image
-          w={"200px"}
-          h={"30px"}
-          mt={1}
-          src="https://www.engagebay.com/new/assets/img/engagebay-logo.svg"
-          alt="Engagebay Logo"
-        />
+        <Link to="/">
+          <Image
+            w={"300px"}
+            h={"30px"}
+            mt={1}
+            src="https://www.engagebay.com/new/assets/img/engagebay-logo.svg"
+            alt="Engagebay Logo"
+          />
+        </Link>
         <Box fontWeight={"500"} pl={10} w={"full"}>
           <Flex
             direction={"row"}
@@ -154,7 +155,10 @@ function Navbar() {
               </Link>
             </Box>
             <Box>
-              <Link _hover={{ color: "purple.400", textDecoration: "none" }}>
+              <Link
+                to="/login"
+                _hover={{ color: "purple.400", textDecoration: "none" }}
+              >
                 Login
               </Link>
             </Box>
@@ -171,15 +175,17 @@ function Navbar() {
             >
               Free Demo
             </Button>
-            <Button
-              borderRadius={"3px"}
-              bg={"orange.500"}
-              color={"#FFFFFF"}
-              _hover={{ backgroundColor: "orange.600" }}
-              px={5}
-            >
-              Free Signup
-            </Button>
+            <Link to="/signup">
+              <Button
+                borderRadius={"3px"}
+                bg={"orange.500"}
+                color={"#FFFFFF"}
+                _hover={{ backgroundColor: "orange.600" }}
+                px={5}
+              >
+                Free Signup
+              </Button>
+            </Link>
           </Flex>
         </Box>
       </Flex>
