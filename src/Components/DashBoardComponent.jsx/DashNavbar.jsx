@@ -4,17 +4,25 @@ import {
   Flex,
   Image,
   Menu,
+  Text,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   Button,
   useDisclosure,
+  Avatar,
   IconButton,
+  Stack,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronDownIcon, SearchIcon } from "@chakra-ui/icons";
 import { IoEllipsisHorizontal } from "react-icons/io5";
+import {
+  MdOutlineShoppingCart,
+  MdAttachMoney,
+  MdPowerSettingsNew,
+} from "react-icons/md";
+import { AiFillSetting, AiOutlineGroup } from "react-icons/ai";
 
 function DashNavbar() {
   const [navColor, setnavColor] = useState("transparent");
@@ -28,25 +36,52 @@ function DashNavbar() {
     };
   }, []);
 
+ const user= JSON.parse(localStorage.getItem("user_login"))
+
+ const {
+   isOpen: isOpenMarketing,
+   onOpen: onOpenMarketing,
+   onClose: onCloseMarketing,
+ } = useDisclosure();
+
   const {
-    isOpen: isOpenProducts,
-    onOpen: onOpenProducts,
-    onClose: onCloseProducts,
+    isOpen: isOpenContacts,
+    onOpen: onOpenContacts,
+    onClose: onCloseContacts,
   } = useDisclosure();
   const {
-    isOpen: isOpenResources,
-    onOpen: onOpenResources,
-    onClose: onCloseResources,
+    isOpen: isOpenForms,
+    onOpen: onOpenForms,
+    onClose: onCloseForms,
   } = useDisclosure();
   const {
-    isOpen: isOpenFreeTools,
-    onOpen: onOpenFreeTools,
-    onClose: onCloseFreeTools,
+    isOpen: isOpenTemplates,
+    onOpen: onOpenTemplates,
+    onClose: onCloseTemplates,
   } = useDisclosure();
+   const {
+     isOpen: isOpenCampaigns,
+     onOpen: onOpenCampaigns,
+     onClose: onCloseCampaigns,
+   } = useDisclosure(); 
+   const {
+     isOpen: isOpenEtc,
+     onOpen: onOpenEtc,
+     onClose: onCloseEtc,
+   } = useDisclosure();
+
+   const history = useNavigate();
+
+  const userLogout = () => {
+    localStorage.removeItem("user_login");
+    history("/");
+  };
+
 
   return (
     <Box
-      px={"2"}
+      px={"3"}
+      h={"60px"}
       style={{
         backgroundColor: "#6B488C",
       }}
@@ -57,8 +92,9 @@ function DashNavbar() {
         direction={"row"}
         justify={"space-around"}
         alignItems={"center"}
+        h={"full"}
       >
-        <Flex w={"17%"} gap={2} alignItems={"center"}>
+        <Flex w={"17%"} gap={2} h={"full"} alignItems={"center"}>
           <Link to="/dashboard">
             <Image
               w={"12"}
@@ -72,8 +108,8 @@ function DashNavbar() {
             h={"90%"}
             src="https://d2p078bqz5urf7.cloudfront.net/cloud/assets/img/menu-icons/menu-divider.png"
           />
-          <Box>
-            <Menu isOpen={isOpenProducts}>
+          <Box color={"white"}>
+            <Menu isOpen={isOpenMarketing}>
               <MenuButton
                 border={"1px solid white"}
                 transition="all 0.2s"
@@ -82,181 +118,268 @@ function DashNavbar() {
                 color={"white"}
                 py={2}
                 px={5}
-                onMouseEnter={onOpenProducts}
-                onMouseLeave={onCloseProducts}
+                onMouseEnter={onOpenMarketing}
+                onMouseLeave={onCloseMarketing}
               >
                 Marketing <ChevronDownIcon color={"white"} />
               </MenuButton>
               <MenuList
-                onMouseEnter={onOpenProducts}
-                onMouseLeave={onCloseProducts}
+                // mt={"-9px"}
+                bgColor={"#522a77"}
+                borderRadius={3}
+                zIndex={0}
+                border={"1px solid #522a77"}
+                onMouseEnter={onOpenMarketing}
+                onMouseLeave={onCloseMarketing}
               >
-                <MenuItem>New File</MenuItem>
-                <MenuItem>New Window</MenuItem>
-                <MenuDivider />
-                <MenuItem>Open...</MenuItem>
-                <MenuItem>Save File</MenuItem>
+                <MenuItem _hover={{ bgColor: "#322659" }}>Marketing</MenuItem>
+                <MenuItem _hover={{ bgColor: "#322659" }}>Sales</MenuItem>
+                <MenuItem _hover={{ bgColor: "#322659" }}>Service</MenuItem>
+                <MenuItem _hover={{ bgColor: "#322659" }}>Livechat</MenuItem>
               </MenuList>
             </Menu>
           </Box>
         </Flex>
 
-        <Box w={"53%"}>
+        <Box pl={10} w={"55%"} h={"full"} color={"white"}>
           <Flex
             direction={"row"}
             alignItems={"center"}
-            justify={"space-around"}
+            // justify={"space-around"}
+            h={"full"}
+            fontSize={14}
+            gap={6}
           >
-            <SearchIcon />
-            <Box>
-              <Menu isOpen={isOpenProducts}>
+            <SearchIcon color={"white"} />
+            <Box h={"full"}>
+              <Menu isOpen={isOpenContacts} h={"full"}>
                 <MenuButton
                   transition="all 0.2s"
-                  _hover={{ bgColor: "purple.600" }}
+                  _hover={{ bgColor: "#522a77" }}
                   aria-label="Courses"
-                  onMouseEnter={onOpenProducts}
-                  onMouseLeave={onCloseProducts}
+                  onMouseEnter={onOpenContacts}
+                  onMouseLeave={onCloseContacts}
+                  h={"full"}
+                  p={2}
+                  color={"white"}
+                  zIndex={2}
                 >
                   Contacts <ChevronDownIcon />
                 </MenuButton>
                 <MenuList
-                  onMouseEnter={onOpenProducts}
-                  onMouseLeave={onCloseProducts}
+                  mt={"-9px"}
+                  bgColor={"#522a77"}
+                  borderRadius={0}
+                  zIndex={0}
+                  border={"1px solid #522a77"}
+                  onMouseEnter={onOpenContacts}
+                  onMouseLeave={onCloseContacts}
                 >
-                  <MenuItem>New File</MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Open...</MenuItem>
-                  <MenuItem>Save File</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Contacts</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Lists</MenuItem>
                 </MenuList>
               </Menu>
             </Box>
-            <Box>
-              <Menu isOpen={isOpenProducts}>
+            <Box h={"full"}>
+              <Menu h={"full"} isOpen={isOpenForms}>
                 <MenuButton
                   transition="all 0.2s"
-                  _hover={{ bgColor: "purple.600" }}
+                  _hover={{ bgColor: "#522a77" }}
                   aria-label="Courses"
-                  onMouseEnter={onOpenProducts}
-                  onMouseLeave={onCloseProducts}
+                  onMouseEnter={onOpenForms}
+                  onMouseLeave={onCloseForms}
+                  h={"full"}
+                  p={2}
+                  color={"white"}
                 >
                   Forms <ChevronDownIcon />
                 </MenuButton>
                 <MenuList
-                  onMouseEnter={onOpenProducts}
-                  onMouseLeave={onCloseProducts}
+                  mt={"-9px"}
+                  bgColor={"#522a77"}
+                  borderRadius={0}
+                  zIndex={0}
+                  border={"1px solid #522a77"}
+                  onMouseEnter={onOpenForms}
+                  onMouseLeave={onCloseForms}
                 >
-                  <MenuItem>New File</MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Open...</MenuItem>
-                  <MenuItem>Save File</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Inline Forms
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Popup Forms
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Box>
-            <Box>
-              <Link _hover={{ bgColor: "purple.600", textDecoration: "none" }}>
-                Landing Pages
-              </Link>
-            </Box>
-            <Box>
-              <Menu isOpen={isOpenResources}>
+            <Flex color={"white"} align={"center"}>
+              <Text h={"full"}>Landing Pages</Text>
+            </Flex>
+            <Box h={"full"}>
+              <Menu h={"full"} isOpen={isOpenTemplates}>
                 <MenuButton
                   transition="all 0.2s"
-                  _hover={{ bgColor: "purple.600" }}
+                  _hover={{ bgColor: "#522a77" }}
                   aria-label="Courses"
-                  onMouseEnter={onOpenResources}
-                  onMouseLeave={onCloseResources}
+                  onMouseEnter={onOpenTemplates}
+                  onMouseLeave={onCloseTemplates}
+                  h={"full"}
+                  p={2}
+                  color={"white"}
                 >
                   Templates
                   <ChevronDownIcon />
                 </MenuButton>
                 <MenuList
-                  onMouseEnter={onOpenResources}
-                  onMouseLeave={onCloseResources}
+                  mt={"-9px"}
+                  bgColor={"#522a77"}
+                  borderRadius={0}
+                  zIndex={0}
+                  border={"1px solid #522a77"}
+                  onMouseEnter={onOpenTemplates}
+                  onMouseLeave={onCloseTemplates}
                 >
-                  <MenuItem>New File</MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Open...</MenuItem>
-                  <MenuItem>Save File</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Email Templates
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Video Templates
+                  </MenuItem>
                 </MenuList>
               </Menu>
             </Box>
-            <Box>
-              <Menu isOpen={isOpenFreeTools}>
+            <Box h={"full"}>
+              <Menu h={"full"} isOpen={isOpenCampaigns}>
                 <MenuButton
                   transition="all 0.2s"
-                  _hover={{ bgColor: "purple.600" }}
+                  _hover={{ bgColor: "#522a77" }}
                   aria-label="Courses"
-                  onMouseEnter={onOpenFreeTools}
-                  onMouseLeave={onCloseFreeTools}
+                  onMouseEnter={onOpenCampaigns}
+                  onMouseLeave={onCloseCampaigns}
+                  h={"full"}
+                  p={2}
+                  color={"white"}
                 >
                   Campaigns
                   <ChevronDownIcon />
                 </MenuButton>
                 <MenuList
-                  onMouseEnter={onOpenFreeTools}
-                  onMouseLeave={onCloseFreeTools}
+                  mt={"-9px"}
+                  bgColor={"#522a77"}
+                  borderRadius={0}
+                  zIndex={0}
+                  border={"1px solid #522a77"}
+                  onMouseEnter={onOpenCampaigns}
+                  onMouseLeave={onCloseCampaigns}
                 >
-                  <MenuItem>New File</MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Open...</MenuItem>
-                  <MenuItem>Save File</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Email Brodcasts
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    SMS Brodcasts
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Sequences</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Automation
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Workflows</MenuItem>
                 </MenuList>
               </Menu>
             </Box>
-            <Box>
-              <Menu isOpen={isOpenResources}>
+            <Box h={"full"}>
+              <Menu h={"full"} isOpen={isOpenEtc}>
                 <MenuButton
                   transition="all 0.2s"
-                  _hover={{ bgColor: "purple.600" }}
+                  _hover={{ bgColor: "#522a77" }}
                   aria-label="Courses"
-                  onMouseEnter={onOpenResources}
-                  onMouseLeave={onCloseResources}
+                  onMouseEnter={onOpenEtc}
+                  onMouseLeave={onCloseEtc}
+                  h={"full"}
+                  p={2}
+                  color={"white"}
                 >
-                  <IoEllipsisHorizontal
-                    fontSize="1.25rem"
-                    bg={"none"}
-                  />
+                  <IoEllipsisHorizontal fontSize="1.25rem" bg={"none"} />
                 </MenuButton>
                 <MenuList
-                  onMouseEnter={onOpenResources}
-                  onMouseLeave={onCloseResources}
+                  mt={"-9px"}
+                  bgColor={"#522a77"}
+                  borderRadius={0}
+                  zIndex={0}
+                  border={"1px solid #522a77"}
+                  onMouseEnter={onOpenEtc}
+                  onMouseLeave={onCloseEtc}
                 >
-                  <MenuItem>New File</MenuItem>
-                  <MenuItem>New Window</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Open...</MenuItem>
-                  <MenuItem>Save File</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Social Suits
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    File Repository
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Push Notifications
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Site Messages
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Sticky Bars
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Web Rules</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}> Trash</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>
+                    Activities
+                  </MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}> SMS Logs</MenuItem>
+                  <MenuItem _hover={{ bgColor: "#322659" }}>Reports</MenuItem>
                 </MenuList>
               </Menu>
             </Box>
           </Flex>
         </Box>
-        <Box>
-          <Flex w={"30%"} gap={2}>
+        <Box w={"28%"}>
+          <Flex gap={3} align={"center"} justify={"center"}>
             <Button
               borderRadius={"3px"}
-              bg={"purple.600"}
+              bg={"#f2603e"}
               color={"#FFFFFF"}
-              _hover={{ backgroundColor: "purple.700" }}
-              px={5}
+              fontSize={13}
+              _hover={{ backgroundColor: "orange.500" }}
             >
-              Free Demo
+              Switch to Modern
             </Button>
-            <Link to="/signup">
-              <Button
-                borderRadius={"3px"}
-                bg={"orange.500"}
-                color={"#FFFFFF"}
-                _hover={{ backgroundColor: "orange.600" }}
-                px={5}
-              >
-                Free Signup
-              </Button>
-            </Link>
+            <Button
+              fontSize={13}
+              borderRadius={"3px"}
+              bg={"white"}
+              color={"#f2603e"}
+              border={"1px solid #f2603e"}
+              _hover={{ backgroundColor: "#EDF2F7" }}
+            >
+              Schedule a Call
+            </Button>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                aria-label="Options"
+                icon={<Avatar size="md" bg="grey.500" />}
+                variant="outline"
+              />
+              <MenuList p={0}>
+                <MenuItem p={0}>
+                  <Stack bg={"#4285f4"} p={2} color={"white"}>
+                    <Text>{user.name}</Text>
+                    <Text>{user.username}</Text>
+                  </Stack>
+                </MenuItem>
+                <MenuItem icon={<MdOutlineShoppingCart />}> Billing</MenuItem>
+                <MenuItem icon={<AiFillSetting />}>Preferences</MenuItem>
+                <MenuItem icon={<AiOutlineGroup />}>Account Settings</MenuItem>
+                <MenuItem icon={<MdAttachMoney />}>Refer & Earn</MenuItem>
+                <MenuItem onClick={userLogout} icon={<MdPowerSettingsNew />}>
+                  Logout
+                </MenuItem>
+              </MenuList>
+            </Menu>
           </Flex>
         </Box>
       </Flex>

@@ -68,7 +68,7 @@ const [state, dispatch] = useReducer(reducer, initialState);
           console.log("done");
           dispatch({ type: "reset" });
           localStorage.setItem("user_login", JSON.stringify(...userLogin));
-          history("/");
+          history("/dashboard");
         }
       }
     }
