@@ -40,7 +40,7 @@ Clone the Repository from Github. Then do the following steps:
  
  This is the dashboard page when user visits the website for first time.
 
-  ![App Screenshot] (https://i.postimg.cc/634gYyVX/engage-bay-dashboard.png)
+  ![App Screenshot](https://i.postimg.cc/634gYyVX/engage-bay-dashboard.png)
   
   
   
