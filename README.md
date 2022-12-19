@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# EngageBay-clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It is clone of Engagebay which helps growing businesses to scale faster with its affordable, integrated all-in-one marketing, sales & support software. 
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React, JavaScript, Html, CSS, Chakra-UI, API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Deployment Link
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://myengagebay.netlify.app/
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Navigation Bar and Footer is well aligned.
+- Authenication is provided where data is getting stored in the local storage.
+- Authenticated user will be redirected to landing page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clone the Repository from Github. Then do the following steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+    npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    npm run start
+```
+    
+    
+    
+## Screenshots
 
-## Learn More
+ ### Home Page
+ 
+ This is the dashboard page when user visits the website for first time.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  ![App Screenshot] (https://i.postimg.cc/634gYyVX/engage-bay-dashboard.png)
+  
+  
+  
+ ### Sign Up Page
+ 
+ In Sign up page where user need to submit their details to access the website.
+ 
+  ![App Screenshot](https://i.postimg.cc/DZSxd0kK/engage-bay-signup-capture.png)
+ 
+ 
+ 
+ ### Sign In Page
+ 
+ In Sign up page where user need to give their credentials to access the protected parts of the website.
+ 
+  ![App Screenshot](https://i.postimg.cc/XqxV0sqW/engage-bay-login-capture.png)
+ 
+ 
+ 
+ ### Landing Page
+ 
+ Once user logged in will be re-directed to landing page.
+ 
+  ![App Screenshot](https://i.postimg.cc/85cnssXv/enagage-bay-landing-capture.png)
